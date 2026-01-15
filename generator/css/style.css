@@ -1,0 +1,438 @@
+/* Fonts: Oswald for headings (UI only), Ubuntu for body, Open Sans for preview content */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Ubuntu:wght@300;400;700&family=Open+Sans:wght@400;700&display=swap');
+
+:root{
+  --bg: #f2f2f2;
+  --panel: #ffffff;
+  --border: #cccccc;
+  --muted: #555;
+  --primary: #007bff;
+  --primary-hover: #0056b3;
+  --blockquote-bg: #f0f0f0;
+  --code-bg: #2b2b2b;
+  --scrollbar-track: #f0f0f0;
+  --scrollbar-thumb: #bbbbbb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 12px 0; /* small top padding */
+  background-color: var(--bg);
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+  margin-top: 0;
+  text-align: center; /* center UI headings */
+}
+
+h1 { margin-bottom: 20px; }
+
+form {
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--panel);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.top-fields-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* for smaller screens */
+  justify-content: space-between;
+}
+
+.top-fields-left,
+.top-fields-right {
+  flex: 1;
+  min-width: 300px; /* ensure responsive stacking on mobile */
+}
+
+.top-fields-left input,
+.top-fields-right input {
+  width: 100%; /* full width inside each column */}
+
+
+/* Top fields: keep them stacked and centered */
+.top-fields label { text-align: center; }
+.top-fields input { width: 50%; }
+
+/* Markdown toolbar */
+.markdown-tools {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.markdown-tools button {
+  flex: 1 1 auto;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+/* Uploaded images list */
+.uploaded-images {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.markdown-tools {
+  text-align: left;  /* now left aligned */
+  margin-bottom: 6px;
+}
+
+.markdown-tools button {
+  background-color: var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.markdown-tools button:hover { background-color: var(--primary-hover); }
+
+
+/* Image insert form below the button, same width as textarea */
+.image-insert-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.image-insert-form input {
+  flex: 1 1 calc(50% - 6px);
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.image-insert-form button {
+  flex: 1 1 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  display: block;
+  margin: auto;
+}
+
+/* Labels: centered and bigger */
+label {
+  font-weight: bold;
+  display: block;
+  margin: 20px auto 8px;
+  font-size: 1.2rem;        /* a bit bigger */
+  text-align: center;       /* centered headers above inputs */
+}
+
+/* Inputs: half width, centered text, rounded */
+input[type="text"],
+input[type="url"],
+input[type="file"] {
+  width: 50%;
+  margin: 0 auto 10px;      /* center horizontally and add space below */
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  text-align: center;       /* center text inside inputs */
+  display: block;
+}
+
+/* Add space between browse button and URL input */
+#featuredImageFile { margin-bottom: 12px; }
+
+.image-note {
+  font-size: 0.9em;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 5px;
+}
+
+#featuredWarning {
+  margin-top: 4px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.image-buttons {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.image-buttons button {
+  margin-right: 5px;
+}
+
+button {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+button:hover { background-color: var(--primary-hover); }
+
+/* Two-column area for editor + preview */
+.container {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: stretch; /* ✅ forces both columns to match height */
+}
+
+.flex-half {
+  flex: 1;
+  min-width: 320px;
+}
+
+/* Editor textarea and preview: same height + rounded + shadow */
+textarea,
+.preview {
+  height: 90vh;             /* consistent height */
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Textarea styling */
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 14px;
+  resize: vertical;
+  background: #fff;
+}
+
+/* Markdown preview panel */
+/* Preview column: label above box */
+.preview-column label {
+  display: block;
+  margin-bottom: 1.6em;
+  margin-top: 0.6em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.preview {
+  padding: 15px;
+  background-color: #fff;    /* white background as requested */
+  overflow-y: auto;
+  font-family: 'Open Sans', sans-serif;  /* all preview uses Open Sans */
+  text-align: left;          /* ensure left alignment */
+}
+
+/* Ensure preview headings use Open Sans + left aligned */
+.preview h1,
+.preview h2,
+.preview h3,
+.preview h4,
+.preview h5,
+.preview h6 {
+  font-family: 'Open Sans', sans-serif !important;
+  text-align: left !important;
+  margin-top: 1em;
+}
+
+/* Blockquote + code block styles in preview */
+.preview blockquote {
+  background: var(--blockquote-bg);
+  border-left: 4px solid #ccc;
+  padding: 10px 12px;
+  margin: 12px 0;
+  color: #333;
+  border-radius: 6px;
+}
+
+.preview pre {
+  background: var(--code-bg);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.preview code {
+  background: rgba(0,0,0,0.06);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* Featured image in preview */
+/* Featured image at top */
+.preview-featured img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Any image inside the markdown preview */
+.preview img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Cheat sheet below editor */
+.cheat-sheet { margin-top: 15px; }
+
+
+.cheat-sheet button {
+  background-color: var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.cheat-sheet button:hover { background-color: var(--primary-hover); }
+
+.cheat-sheet-content {
+  display: none;
+  border: 1px solid var(--border);
+  padding: 12px;
+  background: #f7f7f7;
+  font-family: monospace;
+  white-space: pre-wrap;
+  border-radius: 10px;
+}
+
+/* Horizontal line between editor and GitHub fields */
+hr {
+  margin: 30px 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* GitHub fields: stack and center inputs */
+.github-fields label { text-align: center; }
+.github-fields input { width: 50%; margin-bottom: 10px; }
+
+/* Scrollbar styling: match between textarea and preview */
+textarea,
+.preview {
+  scrollbar-width: thin;                    /* Firefox */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+textarea::-webkit-scrollbar,
+.preview::-webkit-scrollbar {
+  width: 10px;                              /* Chrome/Safari/Edge */
+}
+
+textarea::-webkit-scrollbar-track,
+.preview::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb,
+.preview::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  form { padding: 15px; }
+  .container { flex-direction: column; }
+  input[type="text"],
+  input[type="url"],
+  input[type="file"] { width: 100%; } /* go full width on mobile for ease */
+}
+
+/* Container for the buttons */
+button.generate-btn {
+  display: inline-block;
+  margin: 10px 10px 0 0; /* small right margin between buttons */
+  background-color: var(--primary);
+  color: white;
+  padding: 16px 28px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  vertical-align: middle;
+}
+
+button.generate-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Button container wrapper to center both */
+#postForm > .button-group {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Adjust mobile view */
+@media (max-width: 768px) {
+  #postForm > .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button.generate-btn {
+    width: 80%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-fields-container {
+    flex-direction: column;
+  }
+
+  .top-fields-left,
+  .top-fields-right {
+    min-width: 100%;
+  }
+}
+
+
+/* Extra padding at bottom so last content isn't hidden behind button */
+form {
+  padding-bottom: 80px;
+}
+
+#githubProgress {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 6px;
+  background: #f7f7f7;
+  font-family: monospace;
+  white-space: pre-wrap;
+  margin-top: 10px;
+}
+
+.inline-image-list {
+  margin-top: 10px;
+  min-height: 110px; /* so the placeholder square has space */
+}

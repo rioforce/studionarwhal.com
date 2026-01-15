@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Post Generator</title>
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <h1>NEXUS Blog Post Generator</h1>
+
+  <form id="postForm">
+
+  <!-- ===== Top Fields ===== -->
+<div class="top-fields-container">
+  <div class="top-fields-left">
+    <label for="title">Title:</label>
+    <input type="text" id="title" required />
+
+    <label for="date">Date:</label>
+    <input type="text" id="date" required />
+
+    <label for="profile">Profile Name:</label>
+    <input type="text" id="profile" value="rioforce" />
+  </div>
+
+  <div class="top-fields-right">
+    <label for="youtubeLink">YouTube Link:</label>
+    <input type="url" id="youtubeLink" />
+
+    <label>Featured Image:</label>
+    <input type="file" id="featuredImageFile" accept="image/*" />
+    <input type="url" id="featuredImageURL" placeholder="Or paste a direct image URL" />
+    <div id="featuredWarning"></div>
+    <div class="image-note">You can select a local file or paste a URL from online.</div>
+    <div class="image-buttons">
+      <button type="button" id="clearImage">Clear Featured Image</button>
+    </div>
+  </div>
+</div>
+
+  <hr id="editor">
+
+  <!-- ===== Markdown Editor + Preview ===== -->
+  <div class="container">
+    <!-- Editor + Toolbar -->
+    <div class="flex-half editor-column">
+      <div class="markdown-tools">
+        <button type="button" id="btnH1">H1</button>
+        <button type="button" id="btnH2">H2</button>
+        <button type="button" id="btnH3">H3</button>
+        <button type="button" id="btnBold"><b>B</b></button>
+        <button type="button" id="btnItalic"><i>I</i></button>
+        <button type="button" id="btnUnderline"><u>U</u></button>
+    </div>
+
+
+      <textarea id="markdownContent" placeholder="Type your Markdown content here..." required></textarea>
+    </div>
+
+    <!-- Preview -->
+    <div class="flex-half preview-column">
+      <label>Preview:</label>
+      <div id="preview" class="preview"></div>
+    </div>
+  </div>
+
+  <div id="inlineImageList" class="inline-image-list">
+  <!-- JS will insert placeholder or uploaded images here -->
+</div>
+
+<!-- Inline image uploader (always visible below the list) -->
+<div class="image-insert-form">
+  <input type="file" id="mdImageFile" accept="image/*" />
+  <input type="url" id="mdImageURL" placeholder="Or paste image URL" />
+  <button type="button" id="insertImageMarkdown">Insert Image</button>
+  <div id="inlineImageWarning"></div>
+</div>
+
+  <hr id="export">
+
+  <!-- ===== GitHub Fields ===== -->
+  <div class="github-fields">
+    <label for="ghUsername">GitHub Username:</label>
+    <input type="text" id="ghUsername" placeholder="Your GitHub username" />
+
+    <label for="ghRepo">GitHub Repo:</label>
+    <input type="text" id="ghRepo" placeholder="Repository name" />
+
+    <label for="ghToken">GitHub Token:</label>
+    <input type="text" id="ghToken" placeholder="Personal Access Token (session only)" />
+
+    <div style="text-align:center; margin-bottom:10px;">
+      <a href="https://github.com/settings/personal-access-tokens" target="_blank" style="font-size:0.9em;">
+        Find or create your tokens here
+      </a>
+    </div>
+
+    <label for="commitMessage">Commit Message:</label>
+    <input type="text" id="commitMessage" placeholder="Commit message" />
+
+    <div id="ghProgress" style="margin-top:10px; font-family: monospace;"></div>
+    <div id="commitLink"></div>
+  </div>
+
+
+  <!-- Buttons group -->
+  <div class="button-group">
+    <button type="submit" class="generate-btn">Generate Blog Post (ZIP)</button>
+    <button type="button" id="commitBtn" class="generate-btn">Commit to GitHub</button>
+  </div>
+  <div id="ghProgress" style="margin-top:10px; font-family: monospace;"></div>
+  <div id="commitLink"></div>
+</form>
+
+<div class="fine-print" style="margin-top:20px; text-align:center;">
+  <button type="button" id="clearAll" style="font-size:0.85em;">Clear All</button>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="js/utils.js" type="module"></script>
+  <script src="js/app.js" type="module"></script>
+  <script src="js/images.js" type="module"></script>
+  <script src="js/github.js" type="module"></script>
+</body>
+</html>
