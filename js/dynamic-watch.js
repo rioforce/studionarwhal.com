@@ -39,11 +39,13 @@ function loadMedia(youtubeLink, featuredImage) {
     console.log("Loading YouTube:", youtubeLink);
     const fullEmbedUrl = `https://www.youtube.com/embed/${youtubeLink.trim()}`;
     mediaContainer.innerHTML = `
-      <iframe width="851" height="479"
+    <div class='embed-container'>
+      <iframe
               src="${fullEmbedUrl}"
               frameborder="0"
               allowfullscreen>
-      </iframe>`;
+      </iframe>
+      </div>`;
     return;
   }
 
