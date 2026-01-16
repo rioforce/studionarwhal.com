@@ -63,7 +63,7 @@ function loadMedia(youtubeLink, featuredImage) {
 }
 
 function loadProfileInfo(profile) {
-  fetchJsonFile(`../profiles/${profile}-profile.json`)
+  fetchJsonFile(`/../profiles/${profile}-profile.json`)
     .then((data) => {
       // Update HTML with JSON data
       document.querySelector("#profile-link").href = data.profileLink;

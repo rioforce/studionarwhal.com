@@ -1,0 +1,1 @@
+Classic LEGO Island police Captain D. Rom and Officer Laura fight crime in their community after watching a very inspiring film. But have they gone too far??? Has crawme not broke out as much as they thought? Find out in: FULL MORAL PANIC!

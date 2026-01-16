@@ -39,7 +39,7 @@ async function generatePageList() {
   const pageListContainer = document.querySelector("#post-recs");
 
   // Fetch page data from external file
-  const allVideos = await fetchJsonFile("../js/recommended-videos.json");
+  const allVideos = await fetchJsonFile("/../js/recommended-videos.json");
 
   // Stop if we, for some reason, can't find any recommended videos
   if (!allVideos.videos) {
@@ -50,7 +50,7 @@ async function generatePageList() {
   const displayedPages = getRandomItems(allVideos.videos, 6);
 
   // Get the HTML template to use
-  const template = await fetchTextFile("../templates/recommended-video.html");
+  const template = await fetchTextFile("/../templates/recommended-video.html");
 
   // Loop through the displayed pages and create elements for each
   let renderElements = ["url", "thumbnail", "title", "author", "date"];
