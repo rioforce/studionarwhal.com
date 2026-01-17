@@ -53,7 +53,7 @@ async function generatePageList() {
   const template = await fetchTextFile("/../templates/recommended-video.html");
 
   // Loop through the displayed pages and create elements for each
-  let renderElements = ["url", "thumbnail", "title", "author", "date"];
+  let renderElements = ["url", "thumbnail", "title", "profile", "date"];
   displayedPages.forEach((page) => {
     // Make a copy of the template HTML for rendering
     let thisFilm = template.slice();
