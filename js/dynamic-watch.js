@@ -1,4 +1,5 @@
 import { fetchTextFile, fetchJsonFile } from "./fetch-files.js";
+import { formatISO8601Date } from "./tools.js";
 
 function loadVideoInfo() {
   // Load data from an external JSON file
@@ -7,7 +8,7 @@ function loadVideoInfo() {
       // Set the video metadata
       document.querySelector("#pageTitle").textContent = data.title;
       document.querySelector("#post-title").textContent = data.title;
-      document.querySelector("#post-date").textContent = data.date;
+      document.querySelector("#post-date").textContent = formatISO8601Date(data.date);
 
       // Pull in and render the blog post
       fetchTextFile(data.content).then((markdown) => {

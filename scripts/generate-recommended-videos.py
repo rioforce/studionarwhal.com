@@ -22,7 +22,7 @@ def make_film_page_url(directory_path: Path, /) -> str:
     return f"https://studionarwhal.com/{directory_path.as_posix()}"
 
 
-def main() -> None:
+def main(pretty: bool = False) -> None:
     # BASE_YT_VIDEO_URL = "https://www.youtube.com/watch?v={code}"
     recommended_videos: list[Video] = []
 
