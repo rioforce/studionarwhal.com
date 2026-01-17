@@ -72,7 +72,7 @@ export async function commitToGitHub({
       content: markdown
     });
 
-    // postinfo.json
+    // film-info.json
     const postJSON = JSON.stringify({
       title,
       youtubeLink,
@@ -82,7 +82,7 @@ export async function commitToGitHub({
       profile
     }, null, 4);
     filesToCommit.push({
-      path: folderPath + 'postinfo.json',
+      path: folderPath + 'film-info.json',
       mode: '100644',
       type: 'blob',
       content: postJSON

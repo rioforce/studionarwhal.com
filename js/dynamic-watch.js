@@ -1,8 +1,8 @@
 import { fetchTextFile, fetchJsonFile } from "./fetch-files.js";
 
 function loadVideoInfo() {
-  // Load data from an external JSON file (e.g., videoinfo.json)
-  fetchJsonFile("postinfo.json")
+  // Load data from an external JSON file
+  fetchJsonFile("film-info.json")
     .then((data) => {
       // Set the video metadata
       document.querySelector("#pageTitle").textContent = data.title;
@@ -40,12 +40,8 @@ function loadMedia(youtubeLink, featuredImage) {
     const fullEmbedUrl = `https://www.youtube.com/embed/${youtubeLink.trim()}`;
     mediaContainer.innerHTML = `
     <div class='embed-container'>
-      <iframe
-              src="${fullEmbedUrl}"
-              frameborder="0"
-              allowfullscreen>
-      </iframe>
-      </div>`;
+      <iframe src="${fullEmbedUrl}" frameborder="0" allowfullscreen></iframe>
+    </div>`;
     return;
   }
 

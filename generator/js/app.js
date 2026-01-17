@@ -202,9 +202,9 @@ postForm.addEventListener('submit', async (e) => {
 
   const zip = new JSZip();
 
-  // Create postinfo.json
+  // Create film-info.json
   zip.file(
-    'postinfo.json',
+    'film-info.json',
     JSON.stringify({
       title: titleInput.value,
       youtubeLink: youtubeLinkInput.value,

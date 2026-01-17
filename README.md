@@ -11,7 +11,7 @@ Currently it looks a lot like YouTube, and that's because it's designed for both
 ##Setting up a new blog post
 
 - Make a copy of the `post` folder.
-- The `postinfo.json` file contains your title, embedded YouTube video or Featured Image, plus the author's name, and the publication date. It also contains a reference to where the post content is.
+- The `film-info.json` file contains your title, embedded YouTube video or Featured Image, plus the author's name, and the publication date. It also contains a reference to where the post content is.
 - The post content is found in the content.md file. Write your blog post using Markdown, HTML, or a combination of both.
 - Nothing needs to be modified in index.html. Only modify this if you have to change the website structure. The rest of the content of the page (header, footer, sidebar) comes in through files in the `templates` folder.
 
