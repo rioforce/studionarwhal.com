@@ -1,9 +1,12 @@
+/**
+ * @param {string} date The date, in YYYY-MM-DD format.
+ */
 export function formatISO8601Date(date) {
   let split = date.split("-");
   let d = new Date();
 
   d.setFullYear(Number.parseInt(split[0]));
-  d.setMonth(Number.parseInt(split[1]));
+  d.setMonth(Number.parseInt(split[1]) - 1);
   d.setDate(Number.parseInt(split[2]));
 
   return d.toLocaleDateString("en-US", {
